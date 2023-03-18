@@ -22,6 +22,16 @@ def select_model(args, device):
         model_path = os.path.join('model_zoo', 'team00_rfdn.pth')
         model = RFDN()
         model.load_state_dict(torch.load(model_path), strict=True)
+    elif model_id == 17:
+        from models.team17_DALFN import DALFN
+        name,data_range=f"{model_id:02}_DAFLN", 1.0
+        model_path = os.path.join('model_zoo','team17_dalfn.pth')
+        model = DALFN()
+        for m in model.modules():
+            if hasattr(m, 'switch_to_deploy'):
+                # print("modules switch to deploy")
+                m.switch_to_deploy()
+        model.load_state_dict(torch.load(model_path,map_location='cuda:0'),strict=True)
     else:
         raise NotImplementedError(f"Model {model_id} is not implemented.")
 
