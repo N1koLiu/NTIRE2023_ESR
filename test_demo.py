@@ -24,7 +24,7 @@ def select_model(args, device):
         model.load_state_dict(torch.load(model_path), strict=True)
     elif model_id == 17:
         from models.team17_DALFN import DALFN
-        name,data_range=f"{model_id:02}_DAFLN", 1.0
+        name,data_range=f"{model_id:02}_DALFN", 1.0
         model_path = os.path.join('model_zoo','team17_dalfn.pth')
         model = DALFN()
         for m in model.modules():
