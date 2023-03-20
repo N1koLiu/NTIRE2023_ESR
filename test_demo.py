@@ -23,10 +23,10 @@ def select_model(args, device):
         model = RFDN()
         model.load_state_dict(torch.load(model_path), strict=True)
     elif model_id == 17:
-        from models.team17_DALFN import DALFN
-        name,data_range=f"{model_id:02}_DALFN", 1.0
-        model_path = os.path.join('model_zoo','team17_dalfn.pth')
-        model = DALFN()
+        from models.team17_DLFAN import DLFAN
+        name,data_range=f"{model_id:02}_DLFAN", 1.0
+        model_path = os.path.join('model_zoo','team17_dlfan.pth')
+        model = DLFAN()
         for m in model.modules():
             if hasattr(m, 'switch_to_deploy'):
                 # print("modules switch to deploy")
